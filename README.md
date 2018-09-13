@@ -1,6 +1,6 @@
 ### Overview
 
-This adds an eval transform to Transformalize using [Jace.NET](https://github.com/pieterderycke/Jace).  It is a plug-in compatible with Transformalize 0.3.7-beta.
+This adds a [Jace.NET](https://github.com/pieterderycke/Jace) transform to Transformalize.  It is a plug-in compatible with Transformalize 0.3.7-beta.
 
 Build the Autofac project and put it's output into Transformalize's *plugins* folder.
 
