@@ -1,0 +1,16 @@
+﻿<cfg name="Test">
+  <entities>
+    <add name="Test">
+      <rows>
+        <add number1="3" number2="7" />
+      </rows>
+      <fields>
+        <add name="number1" type="double" />
+        <add name="number2" type="double" />
+      </fields>
+      <calculated-fields>
+        <add name="jaced" t='jace(number1*number2)' />
+      </calculated-fields>
+    </add>
+  </entities>
+</cfg>
