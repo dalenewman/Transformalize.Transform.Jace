@@ -27,13 +27,13 @@ using Transformalize.Transforms.Jace.Autofac;
 
 namespace UnitTests {
 
-    [TestClass]
-    public class Test {
+   [TestClass]
+   public class Test {
 
-        [TestMethod]
-        public void BasicTests() {
+      [TestMethod]
+      public void BasicTests() {
 
-            const string xml = @"
+         const string xml = @"
 <add name='TestProcess' read-only='false'>
     <entities>
         <add name='TestData'>
@@ -55,25 +55,25 @@ namespace UnitTests {
     </entities>
 
 </add>";
-            using (var outer = new ConfigurationContainer(new JaceModule()).CreateScope(xml)) {
-                using (var inner = new TestContainer(new JaceModule()).CreateScope(outer, new ConsoleLogger(LogLevel.Debug))) {
+         var logger = new ConsoleLogger(LogLevel.Debug);
+         using (var outer = new ConfigurationContainer(new JaceModule()).CreateScope(xml, logger)) {
+            var process = outer.Resolve<Process>();
+            using (var inner = new Container(new JaceModule()).CreateScope(process, logger)) {
 
-                    var process = inner.Resolve<Process>();
+               var controller = inner.Resolve<IProcessController>();
+               controller.Execute();
+               var rows = process.Entities.First().Rows;
 
-                    var controller = inner.Resolve<IProcessController>();
-                    controller.Execute();
-                    var rows = process.Entities.First().Rows;
+               Assert.AreEqual(2.0, rows[0]["added"]);
+               Assert.AreEqual(4.0, rows[1]["added"]);
+               Assert.AreEqual(6.0, rows[2]["added"]);
 
-                    Assert.AreEqual(2.0, rows[0]["added"]);
-                    Assert.AreEqual(4.0, rows[1]["added"]);
-                    Assert.AreEqual(6.0, rows[2]["added"]);
+               Assert.AreEqual(2.0, rows[0]["product"]);
+               Assert.AreEqual(8.0, rows[1]["product"]);
+               Assert.AreEqual(27.0, rows[2]["product"]);
 
-                    Assert.AreEqual(2.0, rows[0]["product"]);
-                    Assert.AreEqual(8.0, rows[1]["product"]);
-                    Assert.AreEqual(27.0, rows[2]["product"]);
-
-                }
             }
-        }
-    }
+         }
+      }
+   }
 }
