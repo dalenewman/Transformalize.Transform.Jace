@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Transformalize.Transform.Jace</id>
-    <version>0.5.0-beta</version>
+    <version>0.6.20-beta</version>
     <title>Transformalize Transform using Jace.NET</title>
     <authors>Dale Newman</authors>
     <owners>Dale Newman</owners>
@@ -10,12 +10,12 @@
     <projectUrl>https://github.com/dalenewman/Transformalize.Transform.Jace</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Transformalize Transform using Jace.NET</description>
-    <releaseNotes>updated to 0.5 transformalize, target 462</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2018-2019</copyright>
     <tags>etl</tags>
     <dependencies>
       <group targetFramework="net462">
-        <dependency id="Transformalize" version="0.5.0-beta" />
+        <dependency id="Transformalize" version="0.6.20-beta" />
         <dependency id="Jace" version="0.9.3" />
       </group>
     </dependencies>
